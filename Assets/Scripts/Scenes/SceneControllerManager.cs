@@ -10,10 +10,13 @@ public class SceneControllerManager : MonoBehaviour
 
     private void OnEnable()
     {
+        SceneManager.LoadScene(currentSceneIndex + 1, LoadSceneMode.Additive);
+        currentSceneIndex = 1;
     }
 
     private void Start()
     {
+        StartCoroutine(WaitForSceneLoad(AfterWait));
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
         currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
     }
@@ -27,7 +30,7 @@ public class SceneControllerManager : MonoBehaviour
 
     IEnumerator WaitForSceneLoad(Action action)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         action();
     }
 
@@ -37,6 +40,11 @@ public class SceneControllerManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentSceneIndex);
         currentSceneIndex++;
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(currentSceneIndex));
+
+    }
+
+    private void AfterWait()
+    {
 
     }
 }

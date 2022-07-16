@@ -6,7 +6,7 @@ public class RotateToCursor : MonoBehaviour
 {
     private Vector3 mousePosition;
     private Vector3 direction;
-    private new Camera camera;
+    private Camera camera;
     private Rigidbody2D playerRgidbody2D;
 
     private void Start()
