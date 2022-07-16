@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,26 +16,27 @@ public class SceneControllerManager : MonoBehaviour
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
         currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        
-    }
-
-    private void Update()
-    {
-        Debug.Log(currentSceneIndex);
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AdvanceScene();
-        }
     }
 
     public void AdvanceScene()
     {
-        // Unload current scene
-        SceneManager.UnloadScene(currentSceneIndex);
         // Load next scene additively
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadSceneAsync(currentSceneIndex + 1, LoadSceneMode.Additive);
+        StartCoroutine(WaitForSceneLoad(AfterSceneUnloadWait));
+    }
+
+    IEnumerator WaitForSceneLoad(Action action)
+    {
+        yield return new WaitForSeconds(0.5f);
+        action();
+    }
+
+    private void AfterSceneUnloadWait()
+    {
+        // Unload current scene
+        SceneManager.UnloadSceneAsync(currentSceneIndex);
         currentSceneIndex++;
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(currentSceneIndex));
+
     }
 }
