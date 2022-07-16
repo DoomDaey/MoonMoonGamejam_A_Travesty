@@ -20,7 +20,7 @@ public class CameraPan : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            offset.m_Offset.x = 10;
+            //offset.m_Offset.x = 10;
         }
     }
 }
