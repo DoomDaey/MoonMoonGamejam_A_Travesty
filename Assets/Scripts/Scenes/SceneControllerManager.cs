@@ -17,7 +17,6 @@ public class SceneControllerManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(WaitForSceneLoad(AfterWait));
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
         currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -26,6 +25,7 @@ public class SceneControllerManager : MonoBehaviour
         // Load next scene additively
         SceneManager.LoadSceneAsync(currentSceneIndex + 1, LoadSceneMode.Additive);
         StartCoroutine(WaitForSceneLoad(AfterSceneUnloadWait));
+
     }
 
     IEnumerator WaitForSceneLoad(Action action)
