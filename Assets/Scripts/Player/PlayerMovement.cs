@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isPressingD;
     public float speed = 5.0f;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -31,6 +33,14 @@ public class PlayerMovement : MonoBehaviour
         isPressingS = Input.GetKey(KeyCode.S);
         isPressingA = Input.GetKey(KeyCode.A);
         isPressingD = Input.GetKey(KeyCode.D);
+        if (isMoving)
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
     }
 
     private void Movement()

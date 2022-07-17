@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5247458659205514362}
   - component: {fileID: 5247458659205514363}
   - component: {fileID: 713978710}
-  - component: {fileID: 713978711}
   - component: {fileID: 713978709}
+  - component: {fileID: 7945393881312216009}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -155,37 +155,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a56818f022b44a34abd8de9fc1d4e29f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &713978711
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5247458659205514342}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &713978709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +172,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847c5cc91a0464f43a57248439e58a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneControllerManager: {fileID: 0}
+--- !u!58 &7945393881312216009
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247458659205514342}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1001 &7036224113353209153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -205,6 +196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5247458659205514361}
     m_Modifications:
+    - target: {fileID: 1945201070, guid: 563e2f67b6e48c64b90670b1fd93e998, type: 3}
+      propertyPath: aiPath
+      value: 
+      objectReference: {fileID: 5247458659205514343}
     - target: {fileID: 2987864936664216136, guid: 563e2f67b6e48c64b90670b1fd93e998, type: 3}
       propertyPath: m_Name
       value: Bee
@@ -255,24 +250,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 563e2f67b6e48c64b90670b1fd93e998, type: 3}
---- !u!1 &5247458660334143241 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2987864936664216136, guid: 563e2f67b6e48c64b90670b1fd93e998, type: 3}
-  m_PrefabInstance: {fileID: 7036224113353209153}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1945201070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5247458660334143241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87ea438560d867745a39aafaff078039, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiPath: {fileID: 5247458659205514343}
 --- !u!4 &5247458660334143244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2987864936664216141, guid: 563e2f67b6e48c64b90670b1fd93e998, type: 3}

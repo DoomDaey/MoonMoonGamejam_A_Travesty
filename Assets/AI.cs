@@ -6,10 +6,12 @@ using Pathfinding;
 public class AI : MonoBehaviour
 {
     private AIDestinationSetter aiDestinationSetter;
+    public SceneControllerManager sceneControllerManager;
 
     private void OnEnable()
     {
         aiDestinationSetter = GetComponent<AIDestinationSetter>();
+        sceneControllerManager = FindObjectOfType<SceneControllerManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,6 +27,7 @@ public class AI : MonoBehaviour
         {
             Debug.Log(collision.gameObject.name);
             Destroy(this.gameObject);
+            sceneControllerManager.RestartGame();
         }
     }
 }

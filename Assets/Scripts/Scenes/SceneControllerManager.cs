@@ -47,4 +47,9 @@ public class SceneControllerManager : MonoBehaviour
     {
 
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
