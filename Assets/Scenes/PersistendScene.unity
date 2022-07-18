@@ -1328,6 +1328,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: JackTreeRoar
+    clip: {fileID: 8300000, guid: 9f1ff6e0661c6e34b8a4059688ee0da3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BillyDeath
+    clip: {fileID: 8300000, guid: c084d9233695268488c48c601a49cafe, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   allAudioSources: []
 --- !u!4 &554875773
 Transform:
@@ -3262,14 +3274,14 @@ MonoBehaviour:
   - 
   - 
   - 
+  - TreeChop
   - 
+  - TreeChop
   - 
-  - 
-  - 
-  - 
-  - 
+  - TreeChop
+  - JackTreeRoar
   - Devour
-  - 
+  - BillyDeath
   currentImage: 0
   lastSoundThatPlayedIndex: 0
   timer1: 10

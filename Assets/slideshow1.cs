@@ -152,7 +152,17 @@ public class slideshow1 : MonoBehaviour
             FindObjectOfType<AudioManager>().StopPlaying("Devour");
         }
 
-        if (currentImage == 31 && timer1Remaining <= 0.5f)
+        if (currentImage == 18 && timer1Remaining <= 0.5f)
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("Devour");
+        }
+
+        if (currentImage == 30 && timer1Remaining <= 0.5f)
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("HappyHome");
+        }
+
+        if (currentImage == 32 && timer1Remaining <= 0.5f)
         {
             FindObjectOfType<AudioManager>().StopPlaying("Devour");
         }
