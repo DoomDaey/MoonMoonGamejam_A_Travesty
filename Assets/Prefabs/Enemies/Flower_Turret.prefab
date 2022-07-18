@@ -105,7 +105,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   Gun: {fileID: 4519304528857595118}
   bullet: {fileID: 7744012861142828355, guid: b9022987f0b8ae54ebd7b122616eda20, type: 3}
-  FireRate: 1
+  FireRate: 1.2
   Shootpoint: {fileID: 4519304527595808747}
   Force: 50
 --- !u!95 &4519304527595808748
