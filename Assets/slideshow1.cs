@@ -7,7 +7,9 @@ public class slideshow1 : MonoBehaviour
 {
 
     public Texture[] imageArray;
+    public string[] stringArrayOfSoundsToPlay;
     public int currentImage;
+    public int lastSoundThatPlayedIndex;
 
     float deltaTime = 0.0f;
 
@@ -15,6 +17,7 @@ public class slideshow1 : MonoBehaviour
     public float timer1Remaining = 5.0f;
     public bool timer1IsRunning = true;
     public string timer1Text;
+
 
     // added ergonomic functionality,
     // escape key to exit,
@@ -42,17 +45,37 @@ public class slideshow1 : MonoBehaviour
             currentImage = 0;
     }
 
+    private void playSoundBasedOnString(string soundString)
+    {
+        FindObjectOfType<AudioManager>().Play(stringArrayOfSoundsToPlay[currentImage]);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         currentImage = 0;
-        bool timer1IsRunning = true;
         timer1Remaining = timer1;
+
+        if (stringArrayOfSoundsToPlay[currentImage] != null)
+        {
+            playSoundBasedOnString(stringArrayOfSoundsToPlay[currentImage]);
+            lastSoundThatPlayedIndex = currentImage;
+        }
+    }
+
+    private IEnumerator WaitForCoroutine()
+    {
+        yield return new WaitForSeconds((float)(timer1Remaining - 1));
+
+        FindObjectOfType<AudioManager>().StopAllAudio();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
 
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
 
@@ -76,6 +99,13 @@ public class slideshow1 : MonoBehaviour
             UnityEngine.Debug.Log("Pressed space bar.");
             currentImage++;
 
+            if (stringArrayOfSoundsToPlay[currentImage] != null)
+            {
+                playSoundBasedOnString(stringArrayOfSoundsToPlay[currentImage]);
+                lastSoundThatPlayedIndex = currentImage;
+
+            }
+
             if (currentImage >= imageArray.Length)
                 gameObject.SetActive(false);
         }
@@ -95,6 +125,11 @@ public class slideshow1 : MonoBehaviour
 
                 currentImage++;
 
+                if (stringArrayOfSoundsToPlay[currentImage] != null)
+                {
+                    playSoundBasedOnString(stringArrayOfSoundsToPlay[currentImage]);
+                }
+
 
                 if (currentImage >= imageArray.Length)
                 {
@@ -104,6 +139,22 @@ public class slideshow1 : MonoBehaviour
 
                 timer1Remaining = timer1;
             }
+        }
+        // Disable all Songs manually since im too dumb
+        if (currentImage == 12 && timer1Remaining <= 0.5f)
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("Lumber");
+
+        }
+
+        if (currentImage == 14 && timer1Remaining <= 0.5f)
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("Devour");
+        }
+
+        if (currentImage == 31 && timer1Remaining <= 0.5f)
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("Devour");
         }
 
     }

@@ -8,8 +8,12 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    public AudioSource[] allAudioSources;
+
     private void Awake()
     {
+
+
         if (instance == null)
         {
             instance = this;
@@ -33,7 +37,23 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void Play (string name)
+    private void Start()
+    {
+        allAudioSources = FindObjectsOfType<AudioSource>() as AudioSource[];
+    }
+
+    public void StopAllAudio()
+    {
+        foreach (AudioSource audioSource in allAudioSources)
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Pause();
+            }
+        }
+    }
+
+    public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
@@ -42,5 +62,17 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void StopPlaying(string sound)
+    {
+        Sound s = Array.Find(sounds, item => item.name == sound);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        s.source.Stop();
     }
 }
