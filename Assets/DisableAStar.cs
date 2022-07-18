@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DisableAStar : MonoBehaviour
 {
-    public GameObject aStar;
+    public GameObject lvl1Enemies;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.name == "Player")
+        if (collision.transform.tag == "Player")
         {
-        aStar.SetActive(false);
-
+            lvl1Enemies.SetActive(false);
         }
     }
 }

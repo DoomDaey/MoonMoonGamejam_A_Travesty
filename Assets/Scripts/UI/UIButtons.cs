@@ -13,6 +13,7 @@ public class UIButtons : MonoBehaviour
     [SerializeField]
     private GameObject player;
     private PlayerMovement playerMovement;
+    public GameObject slideshowToEnable;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class UIButtons : MonoBehaviour
         startUpScreen.SetActive(false);
         shooter.SetActive(true);
         playerMovement.disablePlayerMovement = false;
+        slideshowToEnable.SetActive(true);
     }
 
     public void OnQuitGame()

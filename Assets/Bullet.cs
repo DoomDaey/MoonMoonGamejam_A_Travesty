@@ -11,8 +11,13 @@ public class Bullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(1);
         }
         if (collision.gameObject.tag == "Collision")
+        {
+            Destroy(this.gameObject);
+        }
+        else
         {
             Destroy(this.gameObject);
         }
