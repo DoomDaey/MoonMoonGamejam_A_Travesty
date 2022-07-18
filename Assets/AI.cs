@@ -27,7 +27,7 @@ public class AI : MonoBehaviour
         {
             Debug.Log(collision.gameObject.name);
             Destroy(this.gameObject);
-            sceneControllerManager.RestartGame();
+            collision.gameObject.GetComponent<Health>().TakeDamage(1);
         }
     }
 }

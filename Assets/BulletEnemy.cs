@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletEnemy : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            return;
+        }
+        if (collision.gameObject.tag == "Player")
+        {
             Destroy(this.gameObject);
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
         }

@@ -14,6 +14,8 @@ public class UIButtons : MonoBehaviour
     private GameObject player;
     private PlayerMovement playerMovement;
     public GameObject slideshowToEnable;
+    public GameObject gameOverUI;
+    public GameObject sceneManagerController;
 
     private void Start()
     {
@@ -31,5 +33,15 @@ public class UIButtons : MonoBehaviour
     public void OnQuitGame()
     {
         Application.Quit();
+    }
+
+    public void CloseGameOverUI()
+    {
+        gameOverUI.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+
     }
 }

@@ -41,6 +41,12 @@ public class slideshow1 : MonoBehaviour
         if (currentImage >= imageArray.Length)
             currentImage = 0;
     }
+
+    private void OnEnable()
+    {
+        currentImage = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +101,7 @@ public class slideshow1 : MonoBehaviour
                 currentImage++;
 
                 if (currentImage >= imageArray.Length)
+                    currentImage = 0;
                 gameObject.SetActive(false);
 
                 timer1Remaining = timer1;
