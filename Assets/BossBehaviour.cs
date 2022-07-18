@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class BossBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform[] projectileSpawnPoints;
+    public GameObject axePrefab;
+    private Transform transformToThrowFrom;
+    [SerializeField]
+    private float fireRate;
+
+    private void ThrowAxe()
     {
-        
+        transformToThrowFrom = projectileSpawnPoints[Random.Range(0, projectileSpawnPoints.Length)];
+        Instantiate(axePrefab, transformToThrowFrom);
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator ThrowAxeCoroutine()
     {
-        
+        ThrowAxe();
+
+
+        yield return new WaitForEndOfFrame();
     }
 }
