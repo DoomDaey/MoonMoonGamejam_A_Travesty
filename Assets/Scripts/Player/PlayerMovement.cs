@@ -13,9 +13,11 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }

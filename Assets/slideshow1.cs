@@ -42,7 +42,7 @@ public class slideshow1 : MonoBehaviour
         //currentImage++;
 
         if (currentImage >= imageArray.Length)
-            currentImage = 0;
+            gameObject.SetActive(false);
     }
 
     private void playSoundBasedOnString(string soundString)
@@ -74,24 +74,18 @@ public class slideshow1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("HappyHome");
+            FindObjectOfType<AudioManager>().StopPlaying("Devour");
+            FindObjectOfType<AudioManager>().StopPlaying("Lumber");
+            FindObjectOfType<AudioManager>().Play("Forest");
+            gameObject.SetActive(false);
+        }
 
 
 
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-
-        if (Input.GetKey(KeyCode.Escape))
-        {
-#if UNITY_EDITOR
-            if (EditorApplication.isPlaying)
-            {
-                EditorApplication.isPlaying = false;
-            }
-
-#else
-                Application.Quit();
-#endif
-        }
-
 
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -141,30 +135,39 @@ public class slideshow1 : MonoBehaviour
             }
         }
         // Disable all Songs manually since im too dumb
-        if (currentImage == 12 && timer1Remaining <= 0.5f)
+        if (currentImage == 12 && timer1Remaining <= 1f)
         {
             FindObjectOfType<AudioManager>().StopPlaying("Lumber");
-
         }
 
-        if (currentImage == 14 && timer1Remaining <= 0.5f)
+        if (currentImage == 14 && timer1Remaining <= 1f)
         {
             FindObjectOfType<AudioManager>().StopPlaying("Devour");
         }
 
-        if (currentImage == 18 && timer1Remaining <= 0.5f)
+        if (currentImage == 18 && timer1Remaining <= 1f)
         {
             FindObjectOfType<AudioManager>().StopPlaying("Devour");
         }
 
-        if (currentImage == 30 && timer1Remaining <= 0.5f)
+        if (currentImage == 30 && timer1Remaining <= 1f)
         {
             FindObjectOfType<AudioManager>().StopPlaying("HappyHome");
         }
 
-        if (currentImage == 32 && timer1Remaining <= 0.5f)
+        if (currentImage == 32 && timer1Remaining <= 1f)
         {
             FindObjectOfType<AudioManager>().StopPlaying("Devour");
+        }
+
+        if (currentImage == 33 && timer1Remaining <= 1f)
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("HappyHome");
+            FindObjectOfType<AudioManager>().StopPlaying("Devour");
+            FindObjectOfType<AudioManager>().StopPlaying("Lumber");
+            FindObjectOfType<AudioManager>().Play("Forest");
+            gameObject.SetActive(false);
+
         }
 
     }
