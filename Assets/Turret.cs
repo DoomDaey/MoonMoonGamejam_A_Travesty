@@ -57,6 +57,7 @@ public class Turret : MonoBehaviour
     {
         GameObject BulletIns = Instantiate(bullet, Shootpoint.position, Quaternion.Euler(0, 0, Gun.transform.rotation.z));
         BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
+        FindObjectOfType<AudioManager>().Play("FlowerAttack");
     }
     private void OnDrawGizmosSelected()
     {

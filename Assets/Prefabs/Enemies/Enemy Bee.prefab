@@ -202,7 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79514ba07ee996242af7a58561dbc806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  health: 2
+  maxHealth: 5
+  gameOverUI: {fileID: 0}
+  deathSoundToPlay: BeeDeath
+  hurtSoundToPlay: BeeHurt
+  DeathParticles: {fileID: 8910202333210847262, guid: 0156745ed3f49fd4c9952a5692fa136d, type: 3}
 --- !u!1 &8190511258516606641
 GameObject:
   m_ObjectHideFlags: 0

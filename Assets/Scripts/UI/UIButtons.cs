@@ -44,4 +44,9 @@ public class UIButtons : MonoBehaviour
     {
 
     }
+
+    public void PlayButtonClickSound()
+    {
+        FindObjectOfType<AudioManager>().Play("ButtonClickSound");
+    }
 }
